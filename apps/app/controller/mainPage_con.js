@@ -17,6 +17,27 @@ App.mainPageController = SC.Object.create({
     }
   },
 
+  addRightButtonPressed: function() {
+    var accum = App.get('accumulator'),
+      uberObj = App.uberObjectRightController.get('content'),
+      subObjs = uberObj ? uberObj.get('subObjects') : null,
+      newObj,
+      moreData = 'This is a string' + accum;
+
+    if (subObjs) {
+      newObj = {
+        data: accum,
+        subSubObject: {
+          moreData: moreData
+        }
+      };
+
+      subObjs.pushObject(newObj);
+
+      App.set('accumulator', accum + 1);
+    }
+  },
+
   buttonAPressed: function() {
 
     App.bottomlevelcontroller.get('content');

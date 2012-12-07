@@ -28,11 +28,17 @@ App.main = function main() {
   App.toplevelcontroller.set('content', toplevel);
 
 
-  var uberObject = App.store.createRecord(App.UberObjectLeft, {
-    name: 'The Uber Object'
+  var uberObjectLeft = App.store.createRecord(App.UberObjectLeft, {
+    name: 'The Left Uber Object'
   });
 
-  App.uberObjectLeftController.set('content', uberObject);
+  App.uberObjectLeftController.set('content', uberObjectLeft);
+
+  var uberObjectRight = App.store.createRecord(App.UberObjectRight, {
+    name: 'The Right Uber Object'
+  });
+
+  App.uberObjectRightController.set('content', uberObjectRight);
 
   App.getPath('mainPage.mainPane').append();
 

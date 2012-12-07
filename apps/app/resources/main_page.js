@@ -8,11 +8,11 @@
 App.mainPage = SC.Page.design({
 
   mainPane: SC.MainPane.design({
-    childViews: 'nameLeftLabel addLeftButton leftList'.w(),
+    childViews: 'nameLeftLabel addLeftButton scrollingLeftList nameRightLabel addRightButton scrollingRightList'.w(),
     //childViews: 'listView labelView buttonViewA buttonViewB buttonViewC'.w(),
 
     nameLeftLabel: SC.LabelView.extend({
-      layout: { left: 0, top: 0, width: 100, height: 24 },
+      layout: { left: 0, top: 0, width: 200, height: 24 },
       valueBinding: 'App.uberObjectLeftController.name'
     }),
 
@@ -23,14 +23,37 @@ App.mainPage = SC.Page.design({
       action: 'addLeftButtonPressed'
     }),
 
-    leftList: SC.ListView.extend({
+    scrollingLeftList: SC.ScrollView.extend({
       layout: { left: 0, top: 60, width: 300, height: 800 },
-      rowHeight: 30,
-      contentBinding: 'App.subObjectsLeftController.arrangedObjects',
-      contentValueKey: 'data',
-      canReorderContent: YES
+      contentView: SC.ListView.extend({
+        rowHeight: 30,
+        contentBinding: 'App.subObjectsLeftController.arrangedObjects',
+        contentValueKey: 'data',
+        canReorderContent: YES
+      })
     }),
 
+    nameRightLabel: SC.LabelView.extend({
+      layout: { left: 400, top: 0, width: 200, height: 24 },
+      valueBinding: 'App.uberObjectRightController.name'
+    }),
+
+    addRightButton: SC.ButtonView.extend({
+      layout: { left: 400, top: 30, width: 100, height: 24 },
+      title: 'Add To Right',
+      target: 'App.mainPageController',
+      action: 'addRightButtonPressed'
+    }),
+
+    scrollingRightList: SC.ScrollView.extend({
+      layout: { left: 400, top: 60, width: 300, height: 800 },
+      contentView: SC.ListView.extend({
+        rowHeight: 30,
+        contentBinding: 'App.subObjectsRightController.arrangedObjects',
+        contentValueKey: 'display',
+        canReorderContent: YES
+      })
+    }),
 
     listView: SC.ListView.extend({
       layout: { left: 0, top: 0, width: 200, height: 100 },
