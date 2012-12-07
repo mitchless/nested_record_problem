@@ -25,7 +25,10 @@ App.mainPage = SC.Page.design({
 
     leftList: SC.ListView.extend({
       layout: { left: 0, top: 60, width: 300, height: 800 },
-      rowHeight: 30
+      rowHeight: 30,
+      contentBinding: 'App.subObjectsLeftController.arrangedObjects',
+      contentValueKey: 'data',
+      canReorderContent: YES
     }),
 
 

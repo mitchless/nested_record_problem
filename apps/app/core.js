@@ -16,7 +16,7 @@ App = SC.Application.create(
   NAMESPACE: 'App',
   VERSION: '0.1.0',
 
-  accumulator: 0,
+  accumulator: 1,
 
   // This is your application store.  You will use this store to access all
   // of your model data.  You can also set a data source on this store to

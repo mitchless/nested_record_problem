@@ -1,3 +1,3 @@
 App.subObjectsLeftController = SC.ArrayController.create({
-  contentBinding: 'App.UberObjectController.subObjects'
+  contentBinding: 'App.uberObjectLeftController.subObjects'
 });

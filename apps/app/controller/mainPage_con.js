@@ -10,6 +10,7 @@ App.mainPageController = SC.Object.create({
       newObj = {
         data: accum
       };
+
       subObjs.pushObject(newObj);
 
       App.set('accumulator', accum + 1);

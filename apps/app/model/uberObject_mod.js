@@ -1,6 +1,6 @@
 App.UberObjectLeft = SC.Record.extend({
 
   name: SC.Record.attr(String),
-  subObjects: SC.Record.toMany(App.SubObjectLeft)
+  subObjects: SC.Record.toMany(App.SubObjectLeft, { isNested: YES })
 
 });
