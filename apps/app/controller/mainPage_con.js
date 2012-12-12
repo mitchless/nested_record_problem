@@ -1,5 +1,49 @@
 App.mainPageController = SC.Object.create({
 
+  nestStorePressed: function() {
+    var nestedStore = App.get('nestedStore'),
+      store,
+      leftObjects,
+      rightObjects;
+
+    if(SC.empty(nestedStore)) {
+      store = App.get('store');
+
+      nestedStore = store.chain();
+
+      leftObjects = nestedStore.find(App.UberObjectLeft);
+      rightObjects = nestedStore.find(App.UberObjectRight);
+
+      App.uberObjectLeftController.set('content', leftObjects.firstObject());
+      App.uberObjectRightController.set('content', rightObjects.firstObject());
+
+      App.set('nestedStore', nestedStore);
+    }
+  },
+
+  commitStorePressed: function() {
+    var nestedStore = App.get('nestedStore'),
+      store,
+      leftObjects,
+      rightObjects;
+
+    if(!SC.empty(nestedStore)) {
+      nestedStore.commitChanges();
+      App.set('nestedStore', null);
+
+      nestedStore.destroy();
+      nestedStore = null;
+
+      store = App.get('store');
+      leftObjects = store.find(App.UberObjectLeft);
+      rightObjects = store.find(App.UberObjectRight);
+
+      App.uberObjectLeftController.set('content', leftObjects.firstObject());
+      App.uberObjectRightController.set('content', rightObjects.firstObject());
+    }
+
+  },
+
   addLeftButtonPressed: function() {
     var accum = App.get('accumulator'),
       uberObj = App.uberObjectLeftController.get('content'),
